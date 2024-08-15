@@ -1,0 +1,272 @@
+{%include 'donor_header.html'%}
+
+<style>
+    body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+    }
+
+    form {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        background-color: #ffffff;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    th,
+    td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    th {
+        background-color: rgb(170, 38, 21);
+        color: #ffffff;
+    }
+
+    tr:hover {
+        background-color: rgba(34, 31, 70, 0.108);
+    }
+
+    a {
+        text-decoration: none;
+        color: #3498db;
+        transition: color 0.3s;
+        font-weight: bold;
+    }
+
+    a:hover {
+        color: #2980b9;
+    }
+
+    /* Responsive styles */
+    @media only screen and (max-width: 600px) {
+        table {
+            width: 100%;
+        }
+
+        th,
+        td {
+            display: block;
+            width: 100%;
+        }
+    }
+</style>
+<center>
+    <br /><br /><br /><br><br><br><br>
+    <h1>Donate   Details</h1>
+    <style>.loader {
+        display: block;
+        --height-of-loader: 4px;
+        --loader-color: #761a08;
+        width: 130px;
+        height: var(--height-of-loader);
+        border-radius: 30px;
+        background-color: rgba(0,0,0,0.2);
+        position: relative;
+      }
+      
+      .loader::before {
+        content: "";
+        position: absolute;
+        background: var(--loader-color);
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 100%;
+        border-radius: 30px;
+        animation: moving 1s ease-in-out infinite;
+        ;
+      }
+      
+      @keyframes moving {
+        50% {
+          width: 100%;
+        }
+      
+        100% {
+          width: 0;
+          right: 0;
+          left: unset;
+        }
+      }</style>
+
+      <div class="loader"></div>
+
+    <table style="width: 1000px">
+        <tr>
+            <th>si no</th>
+            <th>date</th>
+            <th>unit</th>
+            <th>group</th>
+        </tr>
+
+        {%for i in data['don']%}
+        <tr>
+            <td>{{loop.index}}</td>
+            <td>{{i['date_time']}}</td>
+            <td>{{i['unit_requried']}}</td>
+
+            <td>{{i['group_id']}}</td>
+        </tr>
+        {%endfor%}
+    </table>
+    <style>
+        /* heart beat */
+.heartbeatloader {
+    position: absolute;
+    width: 10vmin;
+    height: 10vmin;
+    z-index: -2;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  
+  .svgdraw {
+    top: 30%;
+    left: 26%;
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    transform: scale(1.4);
+    z-index: 3;
+  }
+  
+  .path {
+    stroke: rgba(0, 0, 0, 0.95);
+    stroke-width: 4;
+    stroke-dasharray: 1000px;
+    stroke-dashoffset: 1000px;
+    animation: draw 1.5s infinite forwards normal linear;
+    animation-delay: 0.1s;
+    position: relative;
+  }
+  
+  @keyframes draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  
+  .innercircle {
+    position: absolute;
+    top: 17%;
+    left: 100.5%;
+    transform: translate(-50%, -50%) scale(1.2);
+    width: 160%;
+    height: auto;
+    z-index: 1;
+    opacity: 0.97;
+    animation: innerbeat 1.5s infinite linear forwards;
+  }
+  
+  .innercircle:before,
+  .innercircle:after {
+    position: absolute;
+    content: "";
+    left: 25%;
+    top: 0;
+    width: 25%;
+    height: auto;
+    padding-bottom: 40%;
+    background: rgb(225, 95, 95);
+    border-radius: 50px 50px 0 0;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+  }
+  
+  .innercircle:after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+  }
+  
+  @keyframes innerbeat {
+    0% {
+      transform: translate(-50%, -50%) scale(1.2);
+    }
+  
+    10% {
+      transform: translate(-50%, -50%) scale(1.2);
+    }
+  
+    50% {
+      transform: translate(-50%, -50%) scale(1.3);
+    }
+  
+    60% {
+      transform: translate(-50%, -50%) scale(1.25);
+    }
+  
+    75% {
+      transform: translate(-50%, -50%) scale(1.3);
+    }
+  }
+  
+  .outercircle {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: rgba(230, 92, 92, 0.774);
+    box-shadow: 0 0 30px 0px #000;
+    position: absolute;
+    z-index: -1;
+    opacity: 0.7;
+    top: 0;
+    left: 0;
+    transform: scale(1.2);
+    animation: outerbeat 1.5s infinite linear forwards;
+  }
+  
+  @keyframes outerbeat {
+    0% {
+      transform: scale(1.2);
+    }
+  
+    10% {
+      transform: scale(1.2);
+    }
+  
+    50% {
+      transform: scale(1.3);
+    }
+  
+    60% {
+      transform: scale(1.25);
+    }
+  
+    75% {
+      transform: scale(1.3);
+    }
+  }
+    </style>
+
+    <div class="heartbeatloader" style="margin-top: 160px;">
+            <svg class="svgdraw" width="100%" height="100%" viewBox="0 0 150 400" xmlns="http://www.w3.org/2000/svg">
+                <path class="path" d="M 0 200 l 40 0 l 5 -40 l 5 40 l 10 0 l 5 15 l 10 -140 l 10 220 l 5 -95 l 10 0 l 5 20 l 5 -20 l 30 0" fill="transparent" stroke-width="4" stroke="black"></path>
+            </svg>
+            <div class="innercircle"></div>
+            <div class="outercircle"></div>
+        </div>
+    
+    <br /><br /><br /><br /><br><br><br><br>
+</center>
+{%include 'footer.html'%}

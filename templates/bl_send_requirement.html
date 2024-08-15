@@ -1,0 +1,135 @@
+{%include 'blood_header.html'%} <br />
+
+<section class="vh-200" style="background-color: #ffffff">
+    <div class="container h-100">
+        <br /><br /><br />
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-12 col-xl-11">
+                <div class="card text-black" style="border-radius: 25px">
+                    <div class="card-body p-md-5">
+                        <div class="row justify-content-center">
+                            <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4"></p>
+                                <h1 class="bounceInDown" style="color: #9d1313">Send requriement</h1>
+
+                                <form action="" method="post">
+                                    <table>
+                                        <tr>
+                                            <th>user</th>
+                                            <td>
+                                                <select name="user" id="">
+                                                    {% for i in data['user']%}
+                                                    <option value="{{i['user_id']}}">{{i['first_name']}}</option>
+                                                    {%endfor%}
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>group</th>
+                                            <td>
+                                                <select name="group" id="">
+                                                    {% for i in data['group'] %}
+                                                    <option value="{{i['group_id']}}">{{i['group_name']}}</option>
+                                                    {%endfor%}
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>unit required</th>
+                                            <td><input type="text" required name="unit" /></td>
+                                        </tr>
+
+                                        <tr>
+                                            <th>description</th>
+                                            <td><input type="text" required name="desc" /></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="submit" name="submit" value="send" class="btn btn-info" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </form>
+                            </div>
+                            <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+                                <img src="static/assets/images/pngwing.com(36).png" class="img-fluid" alt="Sample image" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+    }
+
+    form {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        background-color: #ffffff;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    th,
+    td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    th {
+        background-color: rgb(170, 38, 21);
+        color: #ffffff;
+    }
+
+    tr:hover {
+        background-color: rgba(34, 31, 70, 0.108);
+    }
+
+    a {
+        text-decoration: none;
+        color: #3498db;
+        transition: color 0.3s;
+        font-weight: bold;
+    }
+
+    a:hover {
+        color: #2980b9;
+    }
+
+    /* Responsive styles */
+    @media only screen and (max-width: 600px) {
+        table {
+            width: 100%;
+        }
+
+        th,
+        td {
+            display: block;
+            width: 100%;
+        }
+    }
+</style>
+
+<br /><br /><br />
+{%include 'footer.html'%}

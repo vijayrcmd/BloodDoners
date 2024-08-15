@@ -1,0 +1,134 @@
+
+        {%include 'admin_header.html'%} <br /><br /><br><br>
+        <center>
+            <br><br><br><br>
+            <h1 style="color: #9d1313">View Blood Bank</h1>
+            <style>.loader {
+                display: block;
+                --height-of-loader: 4px;
+                --loader-color: #761a08;
+                width: 130px;
+                height: var(--height-of-loader);
+                border-radius: 30px;
+                background-color: rgba(0,0,0,0.2);
+                position: relative;
+              }
+              
+              .loader::before {
+                content: "";
+                position: absolute;
+                background: var(--loader-color);
+                top: 0;
+                left: 0;
+                width: 0%;
+                height: 100%;
+                border-radius: 30px;
+                animation: moving 1s ease-in-out infinite;
+                ;
+              }
+              
+              @keyframes moving {
+                50% {
+                  width: 100%;
+                }
+              
+                100% {
+                  width: 0;
+                  right: 0;
+                  left: unset;
+                }
+              }</style>
+
+              <div class="loader"></div>
+            <table border="2" style="width: 1200px">
+                <tr>
+                    <th>si no</th>
+                    <th>Name</th>
+                    <th>Place</th>
+                    <th>Pincode</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                </tr>
+                {%for i in data['bank']%}
+                <tr>
+                    <td>{{loop.index}}</td>
+                    <td>{{i['name']}}</td>
+                    <td>{{i['place']}}</td>
+                    <td>{{i['pincode']}}</td>
+                    <td>{{i['phone']}}</td>
+                    <td>{{i['email']}}</td>
+                </tr>
+                {%endfor%}
+            </table>
+        </center>
+        <br /><br /><br /><br><br><br><br><br>
+        {%include 'footer.html'%}   
+</html>
+
+<style>
+    body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+    }
+
+    form {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        background-color: #ffffff;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    th,
+    td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    th {
+        background-color: rgb(170, 38, 21);
+        color: #ffffff;
+    }
+
+    tr:hover {
+        background-color: rgba(34, 31, 70, 0.108);
+    }
+
+    a {
+        text-decoration: none;
+        color: #3498db;
+        transition: color 0.3s;
+        font-weight: bold;
+    }
+
+    a:hover {
+        color: #2980b9;
+    }
+
+    /* Responsive styles */
+    @media only screen and (max-width: 600px) {
+        table {
+            width: 100%;
+        }
+
+        th,
+        td {
+            display: block;
+            width: 100%;
+        }
+    }
+</style>
